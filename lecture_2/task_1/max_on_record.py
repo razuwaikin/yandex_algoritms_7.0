@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import networkx as nx
 
+
 class max_tree:
     def __init__(self, data):
         self.n = len(data)
@@ -11,7 +12,7 @@ class max_tree:
         if start == end:
             self.tree[node] = (data[start], 1)
         else:
-            middle = (start + end)//2
+            middle = (start + end) // 2
             self.build(2*node + 1, start, middle, data)
             self.build(2*node + 2, middle + 1, end, data)
             self.tree[node] = self.merge(self.tree[2*node + 1], self.tree[2*node + 2])
@@ -76,14 +77,14 @@ class max_tree:
 
 if __name__ == "__main__":
     N = int(input())
-    print('N: ', N)
+    # print('N: ', N)
     data = list(map(int, input().split()))
-    print('data: ', data)
+    # print('data: ', data)
     K = int(input())
-    print('K: ', K)
+    # print('K: ', K)
 
     result_tree = max_tree(data)
-    result_tree.print()
+    # result_tree.print()
 
     for _ in range(K):
         L, R = map(int, input().split())
