@@ -29,10 +29,8 @@ class max_tree:
 
     def query_recursive(self, node, start, end, left, right):
         if right < start or left > end:
-            print('query_recursive: right < start or left > end')
             return (float('-inf'), 0)
         if left <= start and right >= end:
-            print('query_recursive: left <= start and right >= end')
             return self.tree[node]
 
         middle = (start + end) // 2
@@ -74,3 +72,20 @@ class max_tree:
         plt.title("Бинарное дерево (max_tree)")
         plt.axis('off')
         plt.show()
+
+
+if __name__ == "__main__":
+    N = int(input())
+    print('N: ', N)
+    data = list(map(int, input().split()))
+    print('data: ', data)
+    K = int(input())
+    print('K: ', K)
+
+    result_tree = max_tree(data)
+    result_tree.print()
+
+    for _ in range(K):
+        L, R = map(int, input().split())
+        result = result_tree.query(L - 1, R - 1)
+        print(f"{result[0]} {result[1]}")
