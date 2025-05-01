@@ -12,7 +12,9 @@ class sparce_table_on_max:
 
             else:
                 for j in range(len(self.table[i])):
-                    self.table[i][j] = self.max_from_two_elements(self.table[i-1][j], self.table[0][j+i])
+                    self.table[i][j] = self.max_from_two_elements(
+                        self.table[i - 1][j], self.table[0][j + i]
+                    )
 
     def max_from_two_elements(self, first_element, second_element):
         if first_element[0] > second_element[0]:
@@ -35,18 +37,12 @@ class sparce_table_on_max:
 
 if __name__ == "__main__":
     N = int(input())
-    # print('N: ', N)
     data = list(map(int, input().split()))
-    # print('data: ', data, '\n\n')
-
-    result_tree = sparce_table_on_max(N, data)
-    # result_tree.print_sparce_table()
+    result_table = sparce_table_on_max(N, data)
 
     K = int(input())
-    # print('K: ', K)
-
     for _ in range(K):
         L, R = map(int, input().split())
         # print('L: ', L, '   R: ', R)
-        result = result_tree.call_me__mommy_please(L - 1, R - 1)
+        result = result_table.call_me__mommy_please(L - 1, R - 1)
         print(f"{result[0]} {result[1]}")
